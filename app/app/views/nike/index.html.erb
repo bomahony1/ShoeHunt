@@ -1,0 +1,23 @@
+<!-- app/views/nike/index.html.erb -->
+<h1>Nike Products</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Original Price</th>
+      <th>Discount Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @nike_products.each do |product| %>
+      <tr>
+        <td><%= product.title %></td>
+        <td><img src ="<%= product.image_url %>" width=50 heigh=50/></td>
+        <td><%= product.original_price %></td>
+        <td><%= product.discount_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

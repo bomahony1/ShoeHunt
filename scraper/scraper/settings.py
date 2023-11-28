@@ -6,27 +6,26 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import os
+from dotenv import load_dotenv
 
 BOT_NAME = "scraper"
 
 SPIDER_MODULES = ["scraper.spiders"]
 NEWSPIDER_MODULE = "scraper.spiders"
 
-FEEDS = {
-    'booksdata.json':{'format':'json'}
-}
+# SMART PROXY API
+load_dotenv()
 
+SCRAPEOPS_API_KEY = os.getenv('SCRAPEOPS_API_KEY')
+SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = os.getenv('SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT')
+SCRAPEOPS_FAKE_USER_AGENT_ENABLED = os.getenv('SCRAPEOPS_FAKE_USER_AGENT_ENABLED')
+SCRAPEOPS_NUM_RESULTS = os.getenv('SCRAPEOPS_NUM_RESULTS')
 
-
-SCRAPEOPS_API_KEY = 'bac0a5a3-2927-48dd-a62e-6ca8e44053fe' # signup at https://scrapeops.io
-SCRAPEOPS_FAKE_USER_AGENT_ENDPOINT = 'https://headers.scrapeops.io/v1/user-agents'
-SCRAPEOPS_FAKE_USER_AGENT_ENABLED = True
-SCRAPEOPS_NUM_RESULTS = 5
-
-PROXY_USER = "sp6dvluimk"
-PROXY_PASSWORD = "9QrxdL7xeb0CeytbL1"
-PROXY_ENDPOINT = "gate.smartproxy.com"
-PROXY_PORT = '10000'
+PROXY_USER = os.getenv('PROXY_USER')
+PROXY_PASSWORD = os.getenv('PROXY_PASSWORD')
+PROXY_ENDPOINT = os.getenv('PROXY_ENDPOINT')
+PROXY_PORT = os.getenv('PROXY_PORT')
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -83,6 +82,8 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     "scraper.pipelines.ScraperPipeline": 300,
+    "scraper.pipelines.SavingToPostgresPipeline": 300,
+    'scraper.pipelines.ModifyImageUrlPipeline': 200,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

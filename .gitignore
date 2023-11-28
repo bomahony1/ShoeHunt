@@ -1,0 +1,3 @@
+scraper/scraper/.env
+app/config/master.key
+sh_kp_lg.pem
