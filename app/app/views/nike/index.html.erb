@@ -1,23 +1,16 @@
 <!-- app/views/nike/index.html.erb -->
-<h1>Nike Products</h1>
-
-<table border="1">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Original Price</th>
-      <th>Discount Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @nike_products.each do |product| %>
-      <tr>
-        <td><%= product.title %></td>
-        <td><img src ="<%= product.image_url %>" width=50 heigh=50/></td>
-        <td><%= product.original_price %></td>
-        <td><%= product.discount_price %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="grid grid-cols-3 mt-5 border-black">
+  <% @nike_products.each do |product| %>
+  <div class="mx-auto mt-10">
+      <a href="#"><img src ="<%= product.image_url %>" width=305 heigh=250/></a>
+      <a href="<%= product.product_url %>">
+        <h1 class="font-kumbh-sans font-bold text-xl text-black-lightbox"><%= product.title %></h1>
+      </a>
+      <div class="flex">
+        <h2 class="text-lg font-bold text-black-lightbox"><%= product.discount_price %></h2>
+        <h2 class="bg-pale-orange text-orange font-bold text-center ml-5 text-sm p-1"><%= product.discount_percent %></h2>
+      </div>
+      <s class="text-dark-grayish-blue"><h2 class="text-dark-grayish-blue text-sm"><%= product.original_price %></h2></s>
+  </div>
+  <% end %>
+</div>

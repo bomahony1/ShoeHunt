@@ -1,10 +1,15 @@
 import scrapy
-import random
-from scraper.items import BookItem
-
+from scraper.items import NikeItem
 
 
 class NikeSpider(scrapy.Spider):
+    custom_settings = {
+    'ITEM_PIPELINES': {
+        'scraper.pipelines.SavingToPostgresPipeline': 400,
+        'scraper.pipelines.ModifyImageUrlPipeline': 200
+        }
+    }
+        
     name = "nikespider"
     allowed_domains = ["nike.com"]
     start_urls = ["https://www.nike.com/ie/w/mens-sale-shoes-3yaepznik1zy7ok"]
@@ -23,39 +28,15 @@ class NikeSpider(scrapy.Spider):
             yield response.follow(absolute_url, callback=self.parse_shoe)
 
     def parse_shoe(self, response):
-        yield {
+        item = NikeItem({
             'title': response.css(".css-1ou6bb2 h1::text").get(),
             'category': response.css(".css-1ou6bb2 h2::text").get(),
             'original_price': response.css(".css-tpaepq::text").get(),
             'discount_price': response.css(".css-xq7tty::text").get(),
+            'discount_percent': response.css('.css-14jqfub::text').get(),
             'image_url': response.css('#pdp-6-up img::attr(src)').get(),
-            'description': response.css("div.pt6-sm.prl6-sm.prl0-lg div.description-preview.body-2.css-1pbvugb p::text").get()
-        }
+            'description': response.css("div.pt6-sm.prl6-sm.prl0-lg div.description-preview.body-2.css-1pbvugb p::text").get(),
+            'product_url': response.url 
+        })
 
-
-           
-        
-
-      
-            
-
-                 
-    
-        
-
-        
-
-
-#  product_name = card.css("div.product-card__title::text").get()
-#             product_description = card.css("div.product-card__subtitle::text").get()
-#             img_src = card.css('div.wall-image-loader img::attr(src)').get()
-#             original_price = card.css("div.product-price.ie__styling::text").get()
-#             discount_price = card.css("div.product-price.is--current-price::text").get()
-
-#  yield {
-#                 "name": product_name,
-#                 "description": product_description,
-#                 "img-src": img_src,
-#                 "original_price": original_price,
-#                 "discount_price": discount_price,
-#             
+        yield item

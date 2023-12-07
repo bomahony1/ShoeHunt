@@ -20,5 +20,27 @@ class BookItem(scrapy.Item):
     availability = scrapy.Field()
     stars = scrapy.Field()
 
+
+class NikeItem(scrapy.Item):
+    title = scrapy.Field()
+    category = scrapy.Field()
+    original_price = scrapy.Field()
+    discount_price = scrapy.Field()
+    discount_percent = scrapy.Field()
+    image_url = scrapy.Field()
+    description = scrapy.Field()
+    product_url = scrapy.Field()
+
+
+class JDSportItem(scrapy.Item):
+    title = scrapy.Field()
+    category = scrapy.Field()
+    original_price = scrapy.Field()
+    discount_price = scrapy.Field()
+    discount_percent = scrapy.Field()
+    image_url = scrapy.Field()
+    description = scrapy.Field()
+    product_url = scrapy.Field()
+
     
   

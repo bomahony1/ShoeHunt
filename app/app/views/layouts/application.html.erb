@@ -3,17 +3,37 @@
   <head>
     <title>App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <style>
+      .font-kumbh-sans {
+        font-family: 'Kumbh Sans', sans-serif;
+      }
+    </style>
   </head>
 
-  <body>
+  <body class="font-kumbh-sans italic">
     <main>
-      <h1>Hello</h1>
+      <nav class="flex p-4">
+        <div class="container mx-auto flex items-center">
+          <!-- Logo -->
+          <a href="#" class="text-black-lightbox font-bold text-4xl">shoehunt</a>
+
+          <!-- Navigation Links -->
+          <div class="hidden md:flex space-x-6 ml-24">
+            <a href="#" class="text-dark-grayish-blue">Collections</a>
+            <a href="#" class="text-dark-grayish-blue">Men</a>
+            <a href="#" class="text-dark-grayish-blue">Women</a>
+          </div>
+        </div>
+        <div class="mr-auto">
+          <button class="text-white px-4 py-2 rounded bg-orange hover:bg-pale-orange hover:text-orange active:scale-95 transition-transform duration-150 font-bold font-bold">Subscribe</button>
+        </div>
+      </nav>
       <%= yield %>
     </main>
   </body>

@@ -34,6 +34,9 @@ PROXY_PORT = os.getenv('PROXY_PORT')
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
+
+LOG_LEVEL = 'DEBUG'
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
@@ -46,7 +49,7 @@ ROBOTSTXT_OBEY = False
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-#COOKIES_ENABLED = False
+COOKIES_ENABLED = True
 
 # Disable Telnet Console (enabled by default)
 #TELNETCONSOLE_ENABLED = False
@@ -66,10 +69,9 @@ ROBOTSTXT_OBEY = False
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    # "scraper.middlewares.ScraperDownloaderMiddleware": 543,
-    "scraper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 400,
-    "scraper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 380,
-    "scraper.middlewares.MyProxyMiddleWare": 350,
+    "scraper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 200,
+    "scraper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 200,
+    "scraper.middlewares.MyProxyMiddleWare": 200,
 }
 
 # Enable or disable extensions
@@ -81,8 +83,6 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    "scraper.pipelines.ScraperPipeline": 300,
-    "scraper.pipelines.SavingToPostgresPipeline": 300,
     'scraper.pipelines.ModifyImageUrlPipeline': 200,
 }
 
