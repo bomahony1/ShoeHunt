@@ -30,6 +30,7 @@ class NikeItem(scrapy.Item):
     image_url = scrapy.Field()
     description = scrapy.Field()
     product_url = scrapy.Field()
+    logo = scrapy.Field() 
 
 
 class JDSportItem(scrapy.Item):
@@ -41,6 +42,7 @@ class JDSportItem(scrapy.Item):
     image_url = scrapy.Field()
     description = scrapy.Field()
     product_url = scrapy.Field()
+    logo = scrapy.Field() 
 
     
   

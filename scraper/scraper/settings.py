@@ -84,6 +84,8 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'scraper.pipelines.ModifyImageUrlPipeline': 200,
+    "scraper.pipelines.ScraperPipeline": 300,
+
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

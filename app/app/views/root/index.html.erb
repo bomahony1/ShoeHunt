@@ -1,0 +1,25 @@
+<!-- app/views/nike/index.html.erb -->
+<div class="grid grid-cols-3 mt-5 border-dark-grayish-blue">
+  <% @all_products .each do |product| %>
+  <div class="mx-auto mt-10">
+      <a href="<%= product_page_path(product) %>">
+        <img src="<%= product.image_url %>" width="305" height="350"/>
+      </a>
+      <a href="<%= product.product_url %>">
+        <h1 class="font-kumbh-sans font-bold text-xl text-black-lightbox"><%= product.title %></h1>
+      </a>
+      <div class="flex justify-between">
+        <div>
+            <div class="flex">
+            <h2 class="text-lg font-bold text-black-lightbox"><%= product.discount_price %></h2>
+            <h2 class="bg-pale-orange text-orange font-bold text-center ml-5 text-sm p-1"><%= product.discount_percent %> off</h2>
+        </div>
+        <s class="text-dark-grayish-blue"><h2 class="text-dark-grayish-blue text-sm"><%= product.original_price %></h2></s>
+        </div>
+        <div>
+            <img src="<%= product.logo %>" width="50" height="50"/>
+        </div>
+      </div>
+  </div>
+  <% end %>
+</div>

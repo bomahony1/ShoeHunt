@@ -14,13 +14,30 @@ ActiveRecord::Schema[7.1].define(version: 0) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "nike", id: false, force: :cascade do |t|
+  create_table "jdsport", id: :serial, force: :cascade do |t|
+    t.datetime "timestamp", precision: nil, default: -> { "CURRENT_TIMESTAMP" }
     t.string "title", limit: 256
-    t.string "description", limit: 512
     t.string "category", limit: 256
     t.string "original_price", limit: 256
     t.string "discount_price", limit: 256
-    t.string "image_url", limit: 256
+    t.string "discount_percent", limit: 256
+    t.string "image_url", limit: 552
+    t.text "description"
+    t.string "product_url", limit: 552
+    t.string "logo", limit: 552
+  end
+
+  create_table "nike", id: :serial, force: :cascade do |t|
+    t.datetime "timestamp", precision: nil, default: -> { "CURRENT_TIMESTAMP" }
+    t.string "title", limit: 256
+    t.string "category", limit: 256
+    t.string "original_price", limit: 256
+    t.string "discount_price", limit: 256
+    t.string "discount_percent", limit: 256
+    t.string "image_url", limit: 552
+    t.text "description"
+    t.string "product_url", limit: 552
+    t.string "logo", limit: 552
   end
 
 end

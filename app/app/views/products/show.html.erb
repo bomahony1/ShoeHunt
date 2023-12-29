@@ -1,0 +1,37 @@
+<!-- app/views/products/show.html.erb -->
+<div>
+  <div class="w-5/6 flex mt-20 mx-auto">
+    <div class="ml-20 rounded-3xl">
+      <a href="#">
+        <img src="<%= @product.image_url %>" width="1500" class="rounded-2xl"/>
+      </a>
+    </div>
+    <div class="mr-25">
+      <div class="font-bold pt-16 pl-14">
+        <div class="flex justify-between">
+          <h2 class="text-orange">SHOEHUNT</h2>
+          <div>
+              <img src="<%= @product.logo %>" width="40" height="40"/>
+          </div>
+        </div>
+        <a href="<%= @product.product_url %>">
+          <h1 class="font-kumbh-sans font-bold text-2xl pt-3 text-black-lightbox"><%= @product.title %></h1>
+        </a>
+        <h3 class="text-dark-grayish-blue text-base/6 pt-3 text-n"><%= @product.description %></h3>
+        <div class="pt-6">
+          <div>
+              <div class="flex">
+              <h2 class="text-lg text-3xl font-bold text-black-lightbox"><%= @product.discount_price %></h2>
+              <h2 class="bg-pale-orange text-xl text-orange font-bold text-center ml-5 text-sm p-1 rounded-lg"><%= @product.discount_percent %></h2>
+          </div>
+          <s class="text-grayish-blue"><h2 class="text-grayish-blue text-m"><%= @product.original_price %></h2></s>
+        </div>
+        <div class="pt-6">
+          <button class="font-bold bg-light-grayish-blue h-14 w-36 mr-3 rounded-lg">wishlist</button>
+          <button class="text-white font-bold bg-orange h-14 w-60 rounded-lg"><i class="fas fa-diamond"></i>Website</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Add more details about the product here -->
+</div>

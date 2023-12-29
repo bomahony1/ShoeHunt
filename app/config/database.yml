@@ -17,13 +17,14 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= Rails.application.credentials.dig(:username) %>
-  password: <%= Rails.application.credentials.dig(:password) %>
-  host: <%= Rails.application.credentials.dig(:host) %>
+  username: postgres
+  password: ####
+  host: ####
+  port: ###
 
 development:
   <<: *default
-  database: shoehunt
+  database: sh_db_local
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.

@@ -1,8 +1,8 @@
 <!-- app/views/nike/index.html.erb -->
 <div class="grid grid-cols-3 mt-5 border-black">
-  <% @nike_products.each do |product| %>
+  <% @jdsportproduct.each do |product| %>
   <div class="mx-auto mt-10">
-      <a href="#"><img src ="<%= product.image_url %>" width=305 heigh=250/></a>
+      <a href="#"><img src ="<%= product.image_url %>" width=305 height=350/></a>
       <a href="<%= product.product_url %>">
         <h1 class="font-kumbh-sans font-bold text-xl text-black-lightbox"><%= product.title %></h1>
       </a>

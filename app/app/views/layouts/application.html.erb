@@ -2,8 +2,11 @@
 <html>
   <head>
     <title>App</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-O4O9C2aBRnMvK8z5EQrt+OiBS2zF8kB8PyGqZJqKzQ7l4RcwhjT7tT7G+fsSQWUqfqFjGS8i0i9gYQU1Ouj6Q==" crossorigin="anonymous" />
+
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -15,26 +18,45 @@
       }
     </style>
   </head>
-
   <body class="font-kumbh-sans italic">
     <main>
-      <nav class="flex p-4">
+      <!-- Navigation Bar -->
+      <nav class="flex p-4 mx-20 pb-12 mt-6 pr-0 pl-0 border-b border-dark-grayish-blue">
         <div class="container mx-auto flex items-center">
           <!-- Logo -->
           <a href="#" class="text-black-lightbox font-bold text-4xl">shoehunt</a>
-
+          
           <!-- Navigation Links -->
           <div class="hidden md:flex space-x-6 ml-24">
-            <a href="#" class="text-dark-grayish-blue">Collections</a>
+            <!-- Dropdown for Collections -->
+            <div class="group relative">
+              <a href="#" class="text-dark-grayish-blue">Collections</a>
+              <div class="hidden group-hover:block absolute z-10 bg-white border shadow-md mt-2 w-28">
+                <!-- Dropdown content goes here -->
+                <a href="#" class="block px-4 py-2 text-dark-grayish-blue">Nike</a>
+                <a href="#" class="block px-4 py-2 text-dark-grayish-blue">JD Sport</a>
+              </div>
+            </div>
+
             <a href="#" class="text-dark-grayish-blue">Men</a>
             <a href="#" class="text-dark-grayish-blue">Women</a>
           </div>
         </div>
+        
+        <!-- Subscribe Button -->
         <div class="mr-auto">
           <button class="text-white px-4 py-2 rounded bg-orange hover:bg-pale-orange hover:text-orange active:scale-95 transition-transform duration-150 font-bold font-bold">Subscribe</button>
         </div>
       </nav>
+      
+      <!-- Main Content -->
       <%= yield %>
+
+      <!-- Footer -->
+      <footer class="mt-20 py-8 text-center py-4 text-white font-bold bg-orange">
+        <p>&copy; shoehunt 2024. All rights reserved.</p>
+      </footer>
+
     </main>
   </body>
 </html>
