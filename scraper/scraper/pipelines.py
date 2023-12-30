@@ -33,11 +33,11 @@ class SavingToPostgresPipeline(object):
 
     def create_connection(self):
         self.conn = psycopg2.connect(
-            host=os.getenv('HOSTL'),
-            port=os.getenv('PORTL'),
-            user=os.getenv('DBUSERL'),
-            password=os.getenv('DBPASSWORDL'),
-            database=os.getenv('DATABASEL')
+            host=os.getenv('HOST'),
+            port=os.getenv('PORT'),
+            user=os.getenv('DBUSER'),
+            password=os.getenv('DBPASSWORD'),
+            database=os.getenv('DATABASE')
         )
         self.curr = self.conn.cursor()
 
@@ -51,7 +51,6 @@ class SavingToPostgresPipeline(object):
         elif self.table_name == 'jdsport':
             id_start_value = 101
 
-
         sql = f"""
         CREATE TABLE IF NOT EXISTS {self.table_name} (
             id SERIAL PRIMARY KEY,
@@ -64,8 +63,7 @@ class SavingToPostgresPipeline(object):
             image_url VARCHAR(552),
             description TEXT,
             product_url VARCHAR(552),
-            logo VARCHAR(552),
-            CONSTRAINT unique_id UNIQUE (id)
+            logo VARCHAR(552)
         )
         """
         try:

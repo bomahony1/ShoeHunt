@@ -27,8 +27,8 @@
           <s class="text-grayish-blue"><h2 class="text-grayish-blue text-m"><%= @product.original_price %></h2></s>
         </div>
         <div class="pt-6">
-          <button class="font-bold bg-light-grayish-blue h-14 w-36 mr-3 rounded-lg">wishlist</button>
-          <button class="text-white font-bold bg-orange h-14 w-60 rounded-lg"><i class="fas fa-diamond"></i>Website</button>
+          <button class="font-bold bg-light-grayish-blue h-14 w-36 mr-3 rounded-lg transform transition-transform hover:-translate-y-1">wishlist</button>
+          <a href="<%= @product.product_url%>"><button class="text-white font-bold bg-orange h-14 w-60 rounded-lg transform transition-transform hover:-translate-y-1">Website</button></a>
         </div>
       </div>
     </div>
